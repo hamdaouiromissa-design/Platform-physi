@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العلوم الفيزيائية - الأستاذة حمداوي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --secondary: #0ea5e9;
+            --accent: #10b981;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        /* شاشة قفل الكود السري */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lock-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .lock-box h2 {
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .lock-box p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lock-box input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .lock-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .lock-error {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        /* محتوى الموقع المخفي حتى يتم إدخال الكود */
+        #main-content {
+            display: none;
+        }
+
+        /* رأس الصفحة الأنيق */
+        header {
+            background: var(--bg-gradient);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem 3rem;
+            position: relative;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .teacher-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0.8rem auto 0;
+            font-size: 1.2rem;
+            max-width: 600px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* حاوية المحتوى */
+        .container {
+            max-width: 1100px;
+            margin: -2rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 3rem 0 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #1e293b;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: 0;
+            right: 25%;
+            border-radius: 2px;
+        }
+
+        /* شبكة البطاقات */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .lesson-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(14, 165, 233, 0.15);
+            border-color: #bae6fd;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-card h3 {
+            margin: 0 0 0.8rem;
+            color: #0f172a;
+            font-size: 1.3rem;
+        }
+
+        .lesson-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn:hover {
+            opacity: 0.95;
+            transform: scale(1.02);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* تذييل الصفحة */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: #0f172a;
+            color: #94a3b8;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+        }
+
+        footer span {
+            color: #38bdf8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شاشة إدخال الكود السري -->
+    <div id="lock-screen">
+        <div class="lock-box">
+            <h2>منصة الأستاذة حمداوي</h2>
+            <p>الرجاء إدخال الكود السري المقدم من الأستاذة للدخول إلى المحتوى:</p>
+            <input type="password" id="access-code" placeholder="أدخل الكود هنا...">
+            <div id="error-msg" class="lock-error">الكود غير صحيح، حاول مرة أخرى!</div>
+            <button class="btn" onclick="checkCode()" style="width: 100%;">دخول للمنصة</button>
+        </div>
+    </div>
+
+    <!-- المحتوى الأساسي للموقع (يظهر بعد كتابة الكود) -->
+    <div id="main-content">
+        <header>
+            <div class="teacher-badge">منصة التعليم التفاعلي</div>
+            <h1>برنامج العلوم الفيزيائية</h1>
+            <p>بإشراف الأستاذة القديرة: <strong>حمداوي</strong>. رفيقكم نحو التميز والتفوق العلمي.</p>
+        </header>
+
+        <div class="container">
+            <!-- قسم السنة الأولى ثانوي -->
+            <div class="section-header">
+                <h2>قسم السنة أولى ثانوي</h2>
+            </div>
+            <div class="lessons-grid">
+                <div class="lesson-card">
+                    <div>
+                        <div class="card-icon">🧪</div>
+                        <h3>دروس السنة الأولى</h3>
+                        <p>ملخصات شاملة ومبسطة لأهم وحدات البرنامج الدراسي للسنة الأولى ثانوي.</p>
+                    </div>
+                    <a href="#" class="btn">عرض الدروس</a>
+                </div>
+                <div class="lesson-card">
+                    <div>
+                        <div class="card-icon">📝</div>
+                        <h3>تمارين السنة الأولى</h3>
+                        <p>مجموعة مختارة من التمارين التطبيقية والحلول النموذجية للتحضير للفرروض والامتحانات.</p>
+                    </div>
+                    <a href="#" class="btn btn-accent">تحميل التمارين</a>
+                </div>
+            </div>
+
+            <!-- قسم السنة الثانية ثانوي -->
+            <div class="section-header">
+                <h2>قسم السنة ثانية ثانوي</h2>
+            </div>
+            <div class="lessons-grid">
+                <div class="lesson-card">
+                    <div>
+                        <div class="card-icon">⚡</div>
+                        <h3>دروس السنة الثانية</h3>
+                        <p>شروحات مفصلة ومتقدمة لدروس الفيزياء والكيمياء الخاصة بمستوى السنة الثانية ثانوي.</p>
+                    </div>
+                    <a href="#" class="btn">عرض الدروس</a>
+                </div>
+                <div class="lesson-card">
+                    <div>
+                        <div class="card-icon">📊</div>
+                        <h3>تمارين السنة الثانية</h3>
+                        <p>سلسلة تمارين شاملة ومتنوعة مع التصحيح المفصل لمختلف الوحدات الدراسية.</p>
+                    </div>
+                    <a href="#" class="btn btn-accent">تحميل التمارين</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>جميع الحقوق محفوظة &copy; 2026 | إعداد وتنظيم <span>الأستاذة حمداوي</span></p>
+        </footer>
+    </div>
+
+    <!-- سكود التحقق من الكود -->
+    <script>
+        // ** يمكنك تغيير الكود السري من هنا (استبدل 2026 بالكود الذي تحبه) **
+        const secretCode = "2026";
+
+        function checkCode() {
+            const userInput = document.getElementById("access-code").value;
+            const errorMsg = document.getElementById("error-msg");
+
+            if (userInput === secretCode) {
+                document.getElementById("lock-screen").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                errorMsg.style.display = "block";
+            }
+        }
+
+        // السماح بالدخول عبر الضغط على زر Enter من لوحة المفاتيح
+        document.getElementById("access-code").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkCode();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+    <script src="/script.js"></script>
+  </body>
+
+</html>
